@@ -44,6 +44,9 @@ public class WarehouseLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public WarehouseLogin() {
+		
+		setTitle("WarehouseLogin");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -109,7 +112,7 @@ public class WarehouseLogin extends JFrame {
 
 				} else {
 					LoggedInUI logedUI;
-					JOptionPane.showMessageDialog(null, "You are not supposed to be h.", "Unauthorized user",
+					JOptionPane.showMessageDialog(null, "You are not supposed to be here", "Unauthorized user",
 							JOptionPane.WARNING_MESSAGE);
 					try {
 						logedUI = new LoggedInUI();

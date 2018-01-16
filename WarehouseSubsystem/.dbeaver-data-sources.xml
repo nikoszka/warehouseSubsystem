@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-1602286718a-317869e91546b632" provider="generic" driver="sqlite_jdbc" name="SQLite - New Connection" save-password="true" show-system-objects="true" read-only="false">
+		<connection server="" database="D:\Downloads\343.309_Toy-Car-Factory_A_M3.2\343.309_Toy-Car-Factory_A_M3.2\WarehouseSubsystem\warehouse.db" url="jdbc:sqlite:D:\Downloads\343.309_Toy-Car-Factory_A_M3.2\343.309_Toy-Car-Factory_A_M3.2\WarehouseSubsystem\warehouse.db" type="dev"/>
+		<virtual-meta-data>
+			<container name="model">
+				<entity name="items">
+					<constraint name="PRIMARY" type="VIRTUAL KEY">
+						<attribute name="itemName"/>
+						<attribute name="amount"/>
+						<attribute name="itemID"/>
+						<attribute name="unit"/>
+						<attribute name="priority"/>
+					</constraint>
+				</entity>
+			</container>
+		</virtual-meta-data>
+	</data-source>
+	<filters/>
+</data-sources>

@@ -63,7 +63,7 @@ public class DatabaseController {
 		}
 
 	}
-
+	// was used for adding users
 	public void insertUsers(String username, String password) {
 		String sql = "INSERT INTO users(username, password) VALUES(?,?)";
 
@@ -76,7 +76,7 @@ public class DatabaseController {
 		}
 
 	}
-
+	//updating database on AGV call
 	public void updateSupplies(int amount, String itemName) {
 		String sql = "UPDATE items SET amount = amount - ? WHERE itemName = ?";
 
@@ -91,7 +91,7 @@ public class DatabaseController {
 	}
 	
 	public void updateItems(int amount, String itemName) {
-		String sql = "UPDATE items SET amount ? WHERE itemName = ?";
+		String sql = "UPDATE items SET amount = ? WHERE itemName = ?";
 
 		try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setInt(1, amount);
@@ -114,7 +114,7 @@ public class DatabaseController {
 			while (rs.next()) {
 				count = count + 1;
 				if (count == 1) {
-					System.out.println("Authorized");
+					System.out.println("Authorized user");
 					userStatus = true;
 				}
 			}
@@ -127,7 +127,7 @@ public class DatabaseController {
 
 	public void orderSupplies() {
 		WarehouseCommunicationManager wcm = new WarehouseCommunicationManager();
-		int baseAmount = 5000;
+		int baseAmount = 500;
 		int orderAmount = (baseAmount / 100) * 20;
 		String sql = "SELECT itemName, amount " + "FROM items WHERE amount < ?";
 
@@ -140,8 +140,7 @@ public class DatabaseController {
 				if (amount1 < orderAmount) {
 					int x = baseAmount - amount1;
 					updateItems(x, itemName);
-					
-					System.out.println(itemName + " " + x);
+					System.out.println("Ordered items automatically " + itemName + " " + x);
 					wcm.orderMaterial(itemName, x);
 					wcm.arrangeNeeded();
 				} else {
@@ -153,6 +152,7 @@ public class DatabaseController {
 
 				}
 			}
+			System.out.println("Order sent to monitoring system");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

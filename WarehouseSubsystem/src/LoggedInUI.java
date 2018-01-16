@@ -40,9 +40,9 @@ public class LoggedInUI extends JFrame {
 
 	public void run() {
 		try {
-
 			LoggedInUI frame = new LoggedInUI();
 			frame.setVisible(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,13 +54,18 @@ public class LoggedInUI extends JFrame {
 	 * @throws SQLException
 	 */
 	public LoggedInUI() throws SQLException {
+
+		setTitle("Warehouse");
 		initialize();
+		
 
 	}
 
 	public void initialize() throws SQLException {
 
 		loadData();
+		db.orderSupplies();
+		
 
 		DefaultTableModel tableModel = new DefaultTableModel();
 		JTable table = new JTable(tableModel);
@@ -127,18 +132,17 @@ public class LoggedInUI extends JFrame {
 	}
 
 	private void loadData() throws SQLException {
-
+		
 		stmt = db.connect().createStatement();
 		rs = stmt.executeQuery("SELECT * FROM items");
-		System.out.println(rs);
-
+		
 	}
 
 	private void loadPriority() throws SQLException {
 
 		stmt = db.connect().createStatement();
 		rs = stmt.executeQuery("SELECT * FROM items ORDER BY priority ASC");
-		System.out.println(rs);
+		
 
 	}
 }
