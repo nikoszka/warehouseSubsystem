@@ -48,7 +48,7 @@ public class DatabaseController {
 		return connection;
 	}
 
-	// insert from java to sqlite
+	// insert from java to sqlite used for populate the database
 	public void insertGoods(String itemName, int amount, int itemID, String unit, int priority) {
 		String sql = "INSERT INTO items(itemName, amount, itemID, unit, priority) VALUES (?, ?, ?, ?, ?)";
 		try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -87,6 +87,7 @@ public class DatabaseController {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		System.out.println("Database updated");
 
 	}
 	
@@ -100,6 +101,7 @@ public class DatabaseController {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		System.out.println("Items updated" + amount+ " " + itemName);
 
 	}
 
@@ -139,13 +141,13 @@ public class DatabaseController {
 				int amount1 = rs.getInt("amount");
 				if (amount1 < orderAmount) {
 					int x = baseAmount - amount1;
-					updateItems(x, itemName);
+					//updateItems(x, itemName);
 					System.out.println("Ordered items automatically " + itemName + " " + x);
 					wcm.orderMaterial(itemName, x);
 					wcm.arrangeNeeded();
 				} else {
 					int x = baseAmount - amount1;
-					updateItems(x, itemName);
+					//updateItems(x, itemName);
 					System.out.println(itemName + " " + x);
 					wcm.orderMaterial(itemName, x);
 					wcm.arrangeNeeded();

@@ -9,7 +9,7 @@ public class WarehouseCommunicationManager {
 
 	// entry method of the Application
 
-	private DatabaseController controller;
+	private DatabaseController controller = new DatabaseController();
 
 	// adress of the server
 	private final String serverAddress = "localhost";
@@ -79,6 +79,15 @@ public class WarehouseCommunicationManager {
 			controller.updateSupplies(Integer.valueOf(amount), itemName);
 			break;
 		}
+		case "materialOrdered":{
+			String[] split = params.split(";");
+			split[0] = split[0];
+			String amount = split[0];
+			String itemName = split[1];
+			System.out.println(amount + itemName);
+			controller.updateItems(Integer.parseInt(amount), itemName);
+			break;
+		}
 		}
 	}
 
@@ -87,7 +96,7 @@ public class WarehouseCommunicationManager {
 	}
 
 	public void orderMaterial(String itemName, int amount) {
-		sendMessage("Warehouse;OrderMaterial" + itemName + amount);
+		sendMessage("Warehouse;OrderMaterial;" + itemName + ";" + amount);
 	}
 
 	// general method for sending a message to the server

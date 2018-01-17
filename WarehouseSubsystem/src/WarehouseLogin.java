@@ -44,7 +44,7 @@ public class WarehouseLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public WarehouseLogin() {
-		
+
 		setTitle("WarehouseLogin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

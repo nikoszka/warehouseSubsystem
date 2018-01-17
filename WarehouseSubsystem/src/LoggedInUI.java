@@ -94,7 +94,7 @@ public class LoggedInUI extends JFrame {
 		btnFirstOrder.setBounds(135, 52, 121, 25);
 		panel_1.add(btnFirstOrder);
 
-		JButton btnPrior = new JButton("Priotize");
+		JButton btnPrior = new JButton("Prioritize");
 		btnPrior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
